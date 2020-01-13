@@ -11,7 +11,8 @@ main = defaultMain tests
 tests :: TestTree
 tests = testGroup "Tests" [unitTests]
 
+--
 unitTests = testGroup "Unit tests"
   [ testCase "Exposed" $
-      exposed `compare` 42 @?= EQ
+      exposed `compare` 43 @?= EQ
   ]
