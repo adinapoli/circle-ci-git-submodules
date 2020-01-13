@@ -1,0 +1,3 @@
+[submodule "circle-ci-mysubmodule"]
+	path = circle-ci-mysubmodule
+	url = git@github.com:adinapoli/circle-ci-mysubmodule.git

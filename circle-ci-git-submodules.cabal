@@ -1,0 +1,19 @@
+cabal-version:       >=1.10
+
+name:                circle-ci-git-submodules
+version:             0.1.0.0
+license-file:        LICENSE
+author:              Alfredo Di Napoli
+maintainer:          alfredo.dinapoli@gmail.com
+build-type:          Simple
+extra-source-files:  CHANGELOG.md
+
+test-suite test-circle-ci
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   .
+  default-language: Haskell2010
+  main-is:          Main.hs
+  build-depends:    base
+                  , tasty
+                  , tasty-hunit
+                  , mysubmodule

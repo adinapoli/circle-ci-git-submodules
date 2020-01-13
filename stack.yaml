@@ -1,0 +1,6 @@
+extra-package-dbs: []
+packages:
+- circle-ci-mysubmodule
+- .
+extra-deps: []
+resolver: lts-14.12

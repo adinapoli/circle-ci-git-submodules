@@ -1,0 +1,41 @@
+---
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: fpco/stack-build:lts-14.12
+    steps:
+      - add_ssh_keys
+      - run: apt-get install z3
+      - checkout
+      - run:
+          name: Submodules 
+          command: |
+            git submodule init
+            git submodule update
+      - restore_cache:
+          keys:
+            - stack-{{ checksum "stack.yaml" }}
+      - run:
+          name: Dependencies
+          command: |
+            stack setup
+            stack build circle-ci-git-submodules --only-dependencies --test --no-run-tests
+      - save_cache:
+          key: stack-{{ checksum "stack.yaml" }}
+          paths:
+            - ~/.stack
+            - ./.stack-work
+      - run:
+          name: Test
+          command: |
+            stack clean
+            stack test -j1 circle-ci-git-submodules:test
+      - store_test_results:
+          path: /tmp/junit
+      - store_artifacts:
+          path: tests/logs/cur
+      - run:
+          name: Dist
+          command: stack sdist
