@@ -36,6 +36,3 @@ jobs:
           path: /tmp/junit
       - store_artifacts:
           path: tests/logs/cur
-      - run:
-          name: Dist
-          command: stack sdist
