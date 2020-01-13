@@ -31,7 +31,7 @@ jobs:
           name: Test
           command: |
             stack clean
-            stack test -j1 circle-ci-git-submodules:test
+            stack test -j1 circle-ci-git-submodules:test-circle-ci
       - store_test_results:
           path: /tmp/junit
       - store_artifacts:
