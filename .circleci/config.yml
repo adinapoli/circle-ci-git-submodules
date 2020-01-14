@@ -7,7 +7,7 @@ jobs:
       - image: fpco/stack-build:lts-14.12
     steps:
       - add_ssh_keys
-      - run: apt-get install z3
+      - run: apt-get update && apt-get install -y z3 git ssh
       - checkout
       - run:
           name: Submodules 
